@@ -1,7 +1,7 @@
-import axios from "axios";
+import { API_BASE_URL } from "../../../config/api.config.js";
 
 const authapiinstance = axios.create({
-    baseURL:"/api/auth",
+    baseURL: `${API_BASE_URL}/api/auth`,
     withCredentials:true,
 })
 

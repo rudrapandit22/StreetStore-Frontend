@@ -1,7 +1,7 @@
-import axios from "axios"
+import { API_BASE_URL } from "../../../config/api.config.js";
 
 const cartapiinstance = axios.create({
-    baseURL:"/api/cart",
+    baseURL: `${API_BASE_URL}/api/cart`,
     withCredentials:true
 })
 
