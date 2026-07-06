@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "../../../config/api.config.js";
+import axios from "axios";
 
 const authapiinstance = axios.create({
     baseURL: `${API_BASE_URL}/api/auth`,
@@ -25,7 +26,3 @@ export async function getMe(){
     return response.data 
 }
 
-export async function getallproducts(){
-    const response = await productapiinstance.get("/")
-    return response.data
-}
