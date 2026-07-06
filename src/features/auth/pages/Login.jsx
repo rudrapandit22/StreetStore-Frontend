@@ -50,9 +50,7 @@ const Login = () => {
     setIsSubmitting(false);
 
     if (result.success) {
-      // Use the user returned directly from login API — role is guaranteed here
       const role = result.user?.role;
-      console.log('Login success, role:', role, 'result.user:', result.user);
       if (role === 'seller') {
         navigate('/seller/dashboard');
       } else {
