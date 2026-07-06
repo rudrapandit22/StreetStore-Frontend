@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useproduct } from '../hooks/useproducts';
 import { getImagekitAuth } from '../services/product.api';
-import ImageKit from 'imagekit-javascript';
+import ImageKit from "@imagekit/javascript";
 
 const CURRENCIES = ['INR', 'USD', 'EUR', 'GBP', 'AED', 'SGD', 'JPY'];
 const MAX_IMAGES = 7;
