@@ -26,3 +26,8 @@ export async function getMe(){
     return response.data 
 }
 
+export async function logoutUser(){
+    const response = await authapiinstance.post("/logout")
+    return response.data
+}
+

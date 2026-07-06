@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setloading, seterror } from "../state/auth.slice.js";
-import { register , login, getMe} from "../service/auth.api.js";
+import { register , login, getMe, logoutUser } from "../service/auth.api.js";
 
 export const useauth = () => {
     const dispatch = useDispatch();
@@ -61,8 +61,17 @@ export const useauth = () => {
        }
     }
 
+    async function handlelogout() {
+        try {
+            dispatch(setloading(true));
+            await logoutUser();
+            dispatch(setUser(null));
+        } catch (err) {
+            console.log(err);
+        } finally {
+            dispatch(setloading(false));
+        }
+    }
 
-
-    return { handleregister, handlelogin,handlegetme, user, loading, error };
+    return { handleregister, handlelogin, handlegetme, handlelogout, user, loading, error };
 };
-

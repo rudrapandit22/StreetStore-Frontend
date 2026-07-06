@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate, Link } from 'react-router';
 import { useproduct } from '../hooks/useproducts';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router';
 import { useCart } from '../../cart/hook/useCart';
+import { useauth } from '../../auth/hook/useAuth.js';
 const CURRENCY_SYMBOLS = { INR: '₹', USD: '$', EUR: '€', GBP: '£', AED: 'د.إ', JPY: '¥' };
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { handlegetproductbyid } = useproduct();
-  const user = useSelector((state) => state.auth.user);
+  const { user, handlelogout } = useauth();
   const {handleAdditem} = useCart();
 
   
@@ -171,6 +170,14 @@ const ProductDetails = () => {
             </svg>
             <span className="absolute top-0 right-0 w-2 h-2 bg-[#8C7A65] rounded-full"></span>
           </Link>
+          {user && (
+            <button
+              onClick={handlelogout}
+              className="text-xs uppercase tracking-wider font-bold text-[#6B5A47] hover:text-[#1C1917] transition-colors cursor-pointer"
+            >
+              Logout
+            </button>
+          )}
         </div>
       </nav>
 
